@@ -1,0 +1,27 @@
+experience:
+  - "WHEAT;1;2"
+  - "POTATOES;2-4"
+
+enabled: false
+
+levels:
+  "WHEAT":
+    level-requirement: 0
+    menu-slot: 10
+    locked-item:
+      name: "blank"
+      material: "RED_STAINED_GLASS_PANE"
+      lore: []
+    unlocked-item:
+      name: "&a&l[&7Level 0&a&l] Wheat Mastery"
+      material: "WHEAT"
+      lore:
+        - ""
+        - "&a&lInfo"
+        - " &7- &fRequired Level: &a0"
+        - " &7- &fTotal Harvested: &a%wheat-broken%"
+        - ""
+    ongoing-item:
+      name: "blank"
+      material: "YELLOW_STAINED_GLASS_PANE"
+      lore: []

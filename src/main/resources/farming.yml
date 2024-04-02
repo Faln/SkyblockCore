@@ -1,0 +1,58 @@
+experience:
+  - "WHEAT;1;2"
+  - "POTATOES;2-4"
+
+exp-formula: "100 + (100 * %level% + (%level% * 50))"
+enabled: true
+
+levels:
+    "WHEAT":
+        level-requirement: 0
+        menu-slot: 10
+        locked-item:
+            name: "blank"
+            material: "RED_STAINED_GLASS_PANE"
+            lore: []
+        unlocked-item:
+            name: "&a&l[&7Level 0&a&l] Wheat Mastery"
+            material: "WHEAT"
+            lore:
+              - ""
+              - "&a&lInfo"
+              - " &7- &fRequired Level: &a0"
+              - " &7- &fTotal Harvested: &a%wheat-broken%"
+              - ""
+        ongoing-item:
+            name: "blank"
+            material: "YELLOW_STAINED_GLASS_PANE"
+            lore: []
+    "POTATOES":
+        level-requirement: 10
+        menu-slot: 11
+        locked-item:
+            name: "&c&l[&7Level 10&c&l] Potatoes Mastery"
+            material: "RED_STAINED_GLASS_PANE"
+            lore:
+              - ""
+              - "&c&lInfo"
+              - " &7- &fRequired Level: &c10"
+              - " &7- &fTotal Harvested: &c%potatoes-broken%"
+              - ""
+        unlocked-item:
+            name: "&a&l[&7Level 10&a&l] Potatoes Mastery"
+            material: "POTATO"
+            lore:
+              - ""
+              - "&a&lInfo"
+              - " &7- &fRequired Level: &a10"
+              - " &7- &fTotal Harvested: &a%potatoes-broken%"
+              - ""
+        ongoing-item:
+            name: "&e&l[&7Level 10&e&l] Potatoes Mastery"
+            material: "YELLOW_STAINED_GLASS_PANE"
+            lore:
+              - ""
+              - "&e&lInfo"
+              - " &7- &fRequired Level: &e10"
+              - " &7- &fTotal Harvested: &e%potatoes-broken%"
+              - ""
