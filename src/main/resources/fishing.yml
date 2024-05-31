@@ -1,11 +1,10 @@
 experience:
-  - "WHEAT;1;2"
-  - "POTATOES;2-4"
+  - "ZOMBIE;1;2"
 
 enabled: false
 
 levels:
-  "WHEAT":
+  "ZOMBIE":
     level-requirement: 0
     menu-slot: 10
     locked-item:

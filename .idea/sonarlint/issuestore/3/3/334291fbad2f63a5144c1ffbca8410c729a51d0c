@@ -1,3 +1,5 @@
 
 
-java:S11928"HDefine a constant instead of duplicating this literal "%level%" 6 times.(œÀô²ûÿÿÿÿ8ì­¡Æú1J$a4d05cfb-9d40-41b9-b549-d70dc7b34f56
+java:S11928"HDefine a constant instead of duplicating this literal "%level%" 6 times.(œÀô²ûÿÿÿÿ8ì­¡Æú1J$944546f5-7b81-4141-bc7b-4f69d940a693
+x
+java:S2065"0Remove the "transient" modifier from this field.(Ì·€¿øÿÿÿÿ8ô¤çü1J$6a1a4707-30a3-4214-bb68-bb9eda664c82

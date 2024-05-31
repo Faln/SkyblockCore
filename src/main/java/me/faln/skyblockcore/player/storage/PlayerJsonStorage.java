@@ -8,7 +8,7 @@ import org.stormdev.storage.json.JsonStorage;
 import java.util.UUID;
 
 /**
- * A JSON storage implementation of {@PlayerData} class
+ * A JSON storage implementation of {@code @PlayerData} class
  *
  * @author Faln
  */

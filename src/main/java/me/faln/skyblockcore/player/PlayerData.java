@@ -28,7 +28,7 @@ import java.util.UUID;
 public final class PlayerData {
 
     private final Map<ProgressionType, ProgressionData> levels = new EnumMap<>(ProgressionType.class);
-    private final SkyblockCore plugin;
+    private final transient SkyblockCore plugin;
     private int level = 1;
     private double exp = 0.0;
 

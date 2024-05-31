@@ -13,6 +13,7 @@ public final class DimensionScanTask extends CommonTask<SkyblockCore> {
 
     public DimensionScanTask(final SkyblockCore plugin) {
         super(plugin, 20);
+        this.run();
     }
 
     @Override

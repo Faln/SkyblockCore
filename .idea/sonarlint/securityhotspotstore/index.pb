@@ -265,3 +265,5 @@ Q.idea/sonarlint/securityhotspotstore/3/d/3d72094c1e7ddf1e7677143a2977869f2dc533
 Q.idea/sonarlint/securityhotspotstore/c/e/ce25d12fd4e637740d8d17c2ebad3d68fc9b5745,9\2\92dc81ac93b60296491c71d28373f9ff018511fc
 w
 G.idea/sonarlint/issuestore/3/d/3d72094c1e7ddf1e7677143a2977869f2dc533e2,f\a\fa30277179201222af23560eec2c4c32cc8a6f0f
+i
+9src/main/java/me/faln/skyblockcore/utils/JsonStorage.java,a\4\a49bdeee5e05cf349eb05c5c75a6b7889bd1e30a

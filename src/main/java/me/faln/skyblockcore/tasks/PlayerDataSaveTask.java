@@ -12,6 +12,7 @@ public final class PlayerDataSaveTask extends CommonTask<SkyblockCore> {
 
     public PlayerDataSaveTask(final SkyblockCore plugin) {
         super(plugin, 20 * 60 * 5, true);
+        this.run();
     }
 
     @Override

@@ -11,6 +11,7 @@ import me.faln.skyblockcore.yml.YMLConfig;
 import org.eclipse.collections.impl.factory.Maps;
 
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Abstraction of progressions
@@ -29,12 +30,20 @@ public abstract class AbstractProgression<T> {
 
     protected AbstractProgression(final SkyblockCore plugin, final YMLConfig config, final Parser<T> parser) {
         this.plugin = plugin;
-        this.type = ProgressionType.valueOf(config.getFile().getName().toUpperCase());
+        this.type = ProgressionType.valueOf(config.getFile().getName().toUpperCase().split("\\.")[0]);
         this.expFormula = config.string("exp-formula");
         this.enabled = config.getBoolean("enabled");
 
         for (final String key : config.getSectionKeys("levels")) {
-            final T thing = parser.parse(key);
+            T thing;
+
+            try {
+                thing = parser.parse(key.toUpperCase());
+            } catch (final IllegalArgumentException exception) {
+                this.plugin.getLogger().warning("Failed to load " + key);
+                continue;
+            }
+
             final ProgressionLevel level = ProgressionLevel.of(config, "levels." + key + ".");
 
             this.levelRequirement.put(thing, level);

@@ -51,8 +51,8 @@ public final class SkyblockCore extends CommonPlugin<SkyblockCore> {
     private final CompassCommand compassCommand = new CompassCommand(this);
     private final DimensionCommand dimensionCommand = new DimensionCommand(this);
 
-    private final PlayerDataSaveTask saveTask = new PlayerDataSaveTask(this);
-    private final DimensionScanTask scanTask = new DimensionScanTask(this);
+    private PlayerDataSaveTask saveTask;
+    private DimensionScanTask scanTask;
 
     private Location spawnLocation;
     private String expFormula;
@@ -74,8 +74,8 @@ public final class SkyblockCore extends CommonPlugin<SkyblockCore> {
 
         this.load();
 
-        this.saveTask.run();
-        this.scanTask.run();
+        this.saveTask = new PlayerDataSaveTask(this);
+        this.scanTask = new DimensionScanTask(this);
 
         new ProgressionLevelUpListener(this);
         new CompassInteractListener(this);
