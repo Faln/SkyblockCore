@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import me.faln.skyblockcore.yml.YMLConfig;
-import net.abyssdev.abysslib.builders.ItemBuilder;
+import org.stormdev.builder.ItemBuilder;
 
 @AllArgsConstructor @Getter @Builder
 public final class ProgressionLevel {

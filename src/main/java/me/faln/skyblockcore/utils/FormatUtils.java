@@ -25,6 +25,10 @@ public class FormatUtils {
     }
 
     public String format(int num) {
+        if (num <= 0) {
+            return String.valueOf(num);
+        }
+
         int i = 0;
         while (num / 10 <= 10) {
             num /= 10;

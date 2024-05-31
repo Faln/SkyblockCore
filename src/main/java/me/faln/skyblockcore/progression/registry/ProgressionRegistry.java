@@ -19,16 +19,16 @@ public final class ProgressionRegistry extends EclipseRegistry<ProgressionType, 
 
     private final SkyblockCore plugin;
 
-    public void register() {
+    public void load() {
         this.register(ProgressionType.FARMING, new FarmingProgression(plugin));
         this.register(ProgressionType.SLAYING, new SlayingProgression(plugin));
         this.register(ProgressionType.MINING, new MiningProgression(plugin));
         this.register(ProgressionType.FISHING, new FishingProgression(plugin));
 
-        new FarmingListeners(plugin, (FarmingProgression) this.getRegistry().get(ProgressionType.FARMING));
-        new SlayingListeners(plugin, (SlayingProgression) this.getRegistry().get(ProgressionType.SLAYING));
-        new MiningListeners(plugin, (MiningProgression) this.getRegistry().get(ProgressionType.MINING));
-        new FishingListeners(plugin, (FishingProgression) this.getRegistry().get(ProgressionType.FISHING));
+        new FarmingListeners(this.plugin, (FarmingProgression) this.getRegistry().get(ProgressionType.FARMING));
+        new SlayingListeners(this.plugin, (SlayingProgression) this.getRegistry().get(ProgressionType.SLAYING));
+        new MiningListeners(this.plugin, (MiningProgression) this.getRegistry().get(ProgressionType.MINING));
+        new FishingListeners(this.plugin, (FishingProgression) this.getRegistry().get(ProgressionType.FISHING));
     }
 
 }

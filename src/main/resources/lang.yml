@@ -1,0 +1,111 @@
+messages:
+  "no-permission":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&c&l[!] &cYou do not have permission."
+  "profession-level-up":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&a&l[!] &aYou %type% Profession has leveled up to %level%."
+  "crop-locked":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&c&l[!] &cYou must be level %level% in order to break this crop."
+  "ore-locked":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&c&l[!] &cYou must be level %level% in order to break this ore."
+  "entity-locked":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&c&l[!] &cYou must be level %level% in order to attack this entity."
+  "spawner-locked":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&c&l[!] &cYou must be level %level% in order to place this spawner."
+  "exp-gained":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&a&l+ %amount% EXP"
+  "exp-loss":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&c&l- %amount% EXP"
+  "leveled-down":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&c&l[!] &cYour level has decreased to level %level%."
+  "leveled-up":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&a&l[!] &aYour level has increased to level %level%."
+  "profession-leveled-up":
+    sound:
+      enabled: true
+      value: "FIZZ"
+      volume: 1
+      pitch: 1
+    message:
+      enabled: true
+      value:
+        - "&a&l[!] &aYour %profession% Profession has increased to level %level%."

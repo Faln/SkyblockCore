@@ -1,19 +1,18 @@
 package me.faln.skyblockcore.progression.impl.fishing.listeners;
 
 import me.faln.skyblockcore.SkyblockCore;
-import me.faln.skyblockcore.events.ExperienceGainEvent;
+import me.faln.skyblockcore.events.ProfessionExperienceGainEvent;
 import me.faln.skyblockcore.player.PlayerData;
 import me.faln.skyblockcore.progression.impl.fishing.FishingProgression;
 import me.faln.skyblockcore.progression.types.ProgressionType;
-import me.faln.skyblockcore.utils.CropUtils;
-import net.abyssdev.abysslib.listener.AbyssListener;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerFishEvent;
+import org.stormdev.abstracts.CommonListener;
 
-public final class FishingListeners extends AbyssListener<SkyblockCore> {
+public final class FishingListeners extends CommonListener<SkyblockCore> {
 
     private final FishingProgression progression;
 
@@ -41,18 +40,12 @@ public final class FishingListeners extends AbyssListener<SkyblockCore> {
         final Player player = event.getPlayer();
         final PlayerData data = this.plugin.getPlayerStorage().get(player.getUniqueId());
 
-        if (this.progression.getLevelRequirement().get(type).getLevelRequirement() > data.getLevels().get(ProgressionType.FARMING).getLevel()) {
-            event.setCancelled(true);
-            this.plugin.getMessageCache().sendMessage(player, "messages.fish-locked");
-            return;
-        }
-
         if (!this.progression.getExperienceValues().containsKey(type)) {
             return;
         }
 
         final double exp = this.progression.getExperienceValues().get(type).get();
-        final ExperienceGainEvent experienceGainEvent = new ExperienceGainEvent(player, ProgressionType.FARMING, exp, false);
+        final ProfessionExperienceGainEvent experienceGainEvent = new ProfessionExperienceGainEvent(player, ProgressionType.FISHING, exp, false);
 
         Bukkit.getServer().getPluginManager().callEvent(experienceGainEvent);
 
@@ -60,6 +53,6 @@ public final class FishingListeners extends AbyssListener<SkyblockCore> {
             return;
         }
 
-        data.addExp(ProgressionType.FARMING, experienceGainEvent.getExp());
+        data.addExp(ProgressionType.FISHING, experienceGainEvent.getExp());
     }
 }

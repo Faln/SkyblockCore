@@ -2,16 +2,7 @@ package me.faln.skyblockcore.yml;
 
 import gg.optimalgames.hologrambridge.HologramAPI;
 import gg.optimalgames.hologrambridge.hologram.Hologram;
-import net.abyssdev.abysslib.builders.ItemBuilder;
-import net.abyssdev.abysslib.config.random.RandomConfigDouble;
-import net.abyssdev.abysslib.config.random.RandomConfigInt;
-import net.abyssdev.abysslib.config.random.RandomConfigLong;
-import net.abyssdev.abysslib.location.LocationSerializer;
-import net.abyssdev.abysslib.menu.item.*;
-import net.abyssdev.abysslib.placeholder.PlaceholderReplacer;
-import net.abyssdev.abysslib.storage.credentials.Credentials;
-import net.abyssdev.abysslib.text.Color;
-import net.abyssdev.abysslib.utils.Region;
+import me.faln.skyblockcore.utils.LocationSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -23,14 +14,20 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
-import org.eclipse.collections.api.factory.Lists;
-import org.eclipse.collections.api.factory.Sets;
-import org.eclipse.collections.api.list.ImmutableList;
-import org.eclipse.collections.api.set.ImmutableSet;
+import org.eclipse.collections.impl.factory.Sets;
 import org.eclipse.collections.impl.list.mutable.primitive.DoubleArrayList;
 import org.eclipse.collections.impl.list.mutable.primitive.IntArrayList;
 import org.eclipse.collections.impl.list.mutable.primitive.LongArrayList;
 import org.jetbrains.annotations.NotNull;
+import org.stormdev.builder.ItemBuilder;
+import org.stormdev.chat.PlaceholderReplacer;
+import org.stormdev.files.random.RandomConfigDouble;
+import org.stormdev.files.random.RandomConfigInt;
+import org.stormdev.files.random.RandomConfigLong;
+import org.stormdev.menus.v2.item.*;
+import org.stormdev.storage.credentials.Credentials;
+import org.stormdev.utils.Color;
+import org.stormdev.utils.Region;
 
 import java.io.File;
 import java.io.IOException;
@@ -297,14 +294,6 @@ public final class YMLConfig {
         }
 
         return primitive;
-    }
-
-    public ImmutableSet<String> getImmutableStringSet(@NotNull final String path) {
-        return Sets.immutable.ofAll(this.list(path));
-    }
-
-    public ImmutableList<String> getImmutableStringList(@NotNull final String path) {
-        return Lists.immutable.ofAll(this.list(path));
     }
 
     public Set<String> getStringSet(@NotNull final String path) {

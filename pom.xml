@@ -23,8 +23,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>14</source>
+                    <target>14</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -76,11 +76,11 @@
         </dependency>
 
         <dependency>
-            <groupId>net.abyssdev</groupId>
-            <artifactId>AbyssLib</artifactId>
+            <groupId>org.stormdev</groupId>
+            <artifactId>Commons</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/AbyssLib.jar</systemPath>
+            <systemPath>${project.basedir}/libs/Commons.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

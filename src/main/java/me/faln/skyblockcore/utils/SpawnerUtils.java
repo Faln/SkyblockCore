@@ -10,12 +10,17 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public final class SpawnerUtils {
 
-    public static EntityType getSpawnerType(ItemStack itemStack) {
-        ItemMeta itemMeta = itemStack.getItemMeta();
+    private SpawnerUtils() {
+        throw new UnsupportedOperationException();
+    }
+
+    public static EntityType getSpawnerType(final ItemStack itemStack) {
+        final ItemMeta itemMeta = itemStack.getItemMeta();
+
         EntityType spawnType = null;
 
         try {
-            BlockStateMeta blockStateMeta = (BlockStateMeta) itemMeta;
+            final BlockStateMeta blockStateMeta = (BlockStateMeta) itemMeta;
             spawnType = ((CreatureSpawner) blockStateMeta.getBlockState()).getSpawnedType();
         } catch (Exception ignored) {}
 

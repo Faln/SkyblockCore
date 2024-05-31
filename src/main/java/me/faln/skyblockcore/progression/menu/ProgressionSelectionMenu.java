@@ -3,12 +3,12 @@ package me.faln.skyblockcore.progression.menu;
 import me.faln.skyblockcore.SkyblockCore;
 import me.faln.skyblockcore.progression.types.ProgressionType;
 import me.faln.skyblockcore.yml.YMLConfig;
-import net.abyssdev.abysslib.builders.ItemBuilder;
-import net.abyssdev.abysslib.menu.MenuBuilder;
-import net.abyssdev.abysslib.menu.templates.GenericAbyssMenu;
 import org.bukkit.entity.Player;
+import org.stormdev.builder.ItemBuilder;
+import org.stormdev.menus.v2.MenuBuilder;
+import org.stormdev.menus.v2.templates.GenericCommonMenu;
 
-public final class ProgressionSelectionMenu extends GenericAbyssMenu<SkyblockCore> {
+public final class ProgressionSelectionMenu extends GenericCommonMenu<SkyblockCore> {
 
     public ProgressionSelectionMenu(final SkyblockCore plugin) {
         super(plugin, plugin.config("menus").getConfig(), "selection.");

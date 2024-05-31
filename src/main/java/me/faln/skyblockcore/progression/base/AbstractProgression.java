@@ -8,10 +8,15 @@ import me.faln.skyblockcore.progression.Parser;
 import me.faln.skyblockcore.progression.level.ProgressionLevel;
 import me.faln.skyblockcore.progression.types.ProgressionType;
 import me.faln.skyblockcore.yml.YMLConfig;
-import org.eclipse.collections.api.factory.Maps;
+import org.eclipse.collections.impl.factory.Maps;
 
 import java.util.Map;
 
+/**
+ * Abstraction of progressions
+ *
+ * @author Faln
+ */
 @AllArgsConstructor @Getter
 public abstract class AbstractProgression<T> {
 

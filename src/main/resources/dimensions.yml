@@ -1,0 +1,38 @@
+dimensions:
+  "ruins":
+    name: "&e&lRuins"
+    level-requirement: 1
+    spawn-location: "Dimensions;0;64;0"
+    region:
+      world: Dimensions
+      min-x: 0
+      min-y: 60
+      min-z: 0
+      max-x: 10
+      max-y: 70
+      max-z: 10
+    menu-slot: 10
+    unlocked-menu-item:
+      name: "&e&lRuins"
+      material: COBBLESTONE
+      custom-model-data: 0
+      lore:
+        - "&eRequired Level: 1"
+        - ""
+        - "&eClick to enter."
+    locked-menu-item:
+      name: "&e&lRuins"
+      material: COBBLESTONE
+      custom-model-data: 0
+      lore:
+        - "&eRequired Level: 1"
+        - ""
+        - "&cLocked."
+
+cooldowns:
+  - "1;30"
+  - "10;25"
+  - "20;20"
+  - "30;15"
+  - "40;10"
+  - "50;5"

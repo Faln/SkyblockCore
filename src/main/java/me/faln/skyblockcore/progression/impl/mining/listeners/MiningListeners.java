@@ -1,20 +1,21 @@
 package me.faln.skyblockcore.progression.impl.mining.listeners;
 
 import me.faln.skyblockcore.SkyblockCore;
-import me.faln.skyblockcore.events.ExperienceGainEvent;
+import me.faln.skyblockcore.events.ProfessionExperienceGainEvent;
 import me.faln.skyblockcore.player.PlayerData;
 import me.faln.skyblockcore.progression.impl.mining.MiningProgression;
 import me.faln.skyblockcore.progression.types.ProgressionType;
 import me.faln.skyblockcore.utils.CropUtils;
-import net.abyssdev.abysslib.listener.AbyssListener;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.stormdev.abstracts.CommonListener;
+import org.stormdev.chat.PlaceholderReplacer;
 
-public final class MiningListeners extends AbyssListener<SkyblockCore> {
+public final class MiningListeners extends CommonListener<SkyblockCore> {
 
     private final MiningProgression progression;
 
@@ -38,10 +39,12 @@ public final class MiningListeners extends AbyssListener<SkyblockCore> {
 
         final Player player = event.getPlayer();
         final PlayerData data = this.plugin.getPlayerStorage().get(player.getUniqueId());
+        final int levelRequirement = this.progression.getLevelRequirement().get(type).getLevelRequirement();
 
-        if (this.progression.getLevelRequirement().get(type).getLevelRequirement() > data.getLevels().get(ProgressionType.MINING).getLevel()) {
+        if (levelRequirement > data.getLevels().get(ProgressionType.MINING).getLevel()) {
             event.setCancelled(true);
-            this.plugin.getMessageCache().sendMessage(player, "messages.ore-locked");
+            this.plugin.getMessageCache().sendMessage(player, "messages.ore-locked", new PlaceholderReplacer()
+                    .addPlaceholder("%level%", String.valueOf(levelRequirement)));
             return;
         }
 
@@ -55,7 +58,7 @@ public final class MiningListeners extends AbyssListener<SkyblockCore> {
         }
 
         final double exp = this.progression.getExperienceValues().get(type).get();
-        final ExperienceGainEvent experienceGainEvent = new ExperienceGainEvent(player, ProgressionType.MINING, exp, false);
+        final ProfessionExperienceGainEvent experienceGainEvent = new ProfessionExperienceGainEvent(player, ProgressionType.MINING, exp, false);
 
         Bukkit.getServer().getPluginManager().callEvent(experienceGainEvent);
 

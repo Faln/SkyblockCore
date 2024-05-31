@@ -2,16 +2,21 @@ package me.faln.skyblockcore.player.storage;
 
 import me.faln.skyblockcore.SkyblockCore;
 import me.faln.skyblockcore.player.PlayerData;
-import net.abyssdev.abysslib.storage.sql.SQLStorage;
+import org.stormdev.storage.sql.SQLStorage;
 
 import java.util.UUID;
 
+/**
+ * A SQL storage implementation of {@PlayerData} class
+ *
+ * @author Faln
+ */
 public final class PlayerSQLStorage extends SQLStorage<UUID, PlayerData> {
 
     private final SkyblockCore plugin;
 
     public PlayerSQLStorage(final SkyblockCore plugin) {
-        super(UUID.class, PlayerData.class, "core-player", plugin.getSettingsConfig().getCredentials());
+        super(UUID.class, PlayerData.class, "skyblockcore_player", plugin.getSettingsConfig().getCredentials());
         this.plugin = plugin;
     }
 

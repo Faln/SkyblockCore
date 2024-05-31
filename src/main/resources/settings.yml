@@ -3,3 +3,14 @@ progression-aliases:
   - "progression"
   - "progressions"
   - "skill"
+
+milestones:
+  - "10;level-10-milestone"
+  - "20;level-20-milestone"
+  - "30;level-30-milestone"
+  - "40;level-40-milestone"
+  - "50;level-50-milestone"
+  - "100;level-100-milestone"
+
+exp-formula: "100 + %level% * 100"
+spawn-location: "world;0;60;0"

@@ -1,21 +1,20 @@
 package me.faln.skyblockcore.progression.impl.farming.listeners;
 
 import me.faln.skyblockcore.SkyblockCore;
-import me.faln.skyblockcore.events.ExperienceGainEvent;
+import me.faln.skyblockcore.events.ProfessionExperienceGainEvent;
 import me.faln.skyblockcore.player.PlayerData;
 import me.faln.skyblockcore.progression.impl.farming.FarmingProgression;
 import me.faln.skyblockcore.progression.types.ProgressionType;
 import me.faln.skyblockcore.utils.CropUtils;
-import net.abyssdev.abysslib.listener.AbyssListener;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.stormdev.abstracts.CommonListener;
+import org.stormdev.chat.PlaceholderReplacer;
 
-import java.util.UUID;
-
-public final class FarmingListeners extends AbyssListener<SkyblockCore> {
+public final class FarmingListeners extends CommonListener<SkyblockCore> {
 
     private final FarmingProgression progression;
 
@@ -38,15 +37,17 @@ public final class FarmingListeners extends AbyssListener<SkyblockCore> {
 
         final Player player = event.getPlayer();
         final PlayerData data = this.plugin.getPlayerStorage().get(player.getUniqueId());
+        final int levelRequirement = this.progression.getLevelRequirement().get(material).getLevelRequirement();
 
-        if (this.progression.getLevelRequirement().get(material).getLevelRequirement() > data.getLevels().get(ProgressionType.FARMING).getLevel()) {
+        if (levelRequirement > data.getLevels().get(ProgressionType.FARMING).getLevel()) {
             event.setCancelled(true);
-            this.plugin.getMessageCache().sendMessage(player, "messages.crop-locked");
+            this.plugin.getMessageCache().sendMessage(player, "messages.crop-locked", new PlaceholderReplacer()
+                    .addPlaceholder("%level%", String.valueOf(levelRequirement)));
             return;
         }
 
         if (!CropUtils.isMaxAge(event.getBlock())) {
-            event.setCancelled(true);
+            //event.setCancelled(true);
             return;
         }
 
@@ -55,7 +56,7 @@ public final class FarmingListeners extends AbyssListener<SkyblockCore> {
         }
 
         final double exp = this.progression.getExperienceValues().get(material).get();
-        final ExperienceGainEvent experienceGainEvent = new ExperienceGainEvent(player, ProgressionType.FARMING, exp, false);
+        final ProfessionExperienceGainEvent experienceGainEvent = new ProfessionExperienceGainEvent(player, ProgressionType.FARMING, exp, false);
 
         Bukkit.getServer().getPluginManager().callEvent(experienceGainEvent);
 

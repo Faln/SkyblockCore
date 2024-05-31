@@ -1,7 +1,7 @@
 package me.faln.skyblockcore.utils;
 
-import net.abyssdev.abysslib.patterns.registry.Registry;
-import org.eclipse.collections.api.factory.Maps;
+import org.eclipse.collections.impl.factory.Maps;
+import org.stormdev.abstracts.Registry;
 
 import java.util.Map;
 

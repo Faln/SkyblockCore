@@ -7,13 +7,13 @@ import me.faln.skyblockcore.progression.data.ProgressionData;
 import me.faln.skyblockcore.progression.level.ProgressionLevel;
 import me.faln.skyblockcore.progression.types.ProgressionType;
 import me.faln.skyblockcore.utils.FormatUtils;
-import net.abyssdev.abysslib.menu.MenuBuilder;
-import net.abyssdev.abysslib.menu.templates.GenericAbyssMenu;
-import net.abyssdev.abysslib.placeholder.PlaceholderReplacer;
-import net.abyssdev.abysslib.utils.AbyssMath;
 import org.bukkit.entity.Player;
+import org.stormdev.chat.PlaceholderReplacer;
+import org.stormdev.menus.v2.MenuBuilder;
+import org.stormdev.menus.v2.templates.GenericCommonMenu;
+import org.stormdev.utils.CommonsMath;
 
-public final class ProgressionMenu extends GenericAbyssMenu<SkyblockCore> {
+public final class ProgressionMenu extends GenericCommonMenu<SkyblockCore> {
 
     private final ProgressionType type;
 
@@ -33,7 +33,7 @@ public final class ProgressionMenu extends GenericAbyssMenu<SkyblockCore> {
             final boolean unlocked = level.getLevelRequirement() <= progressionData.getLevel();
             final PlaceholderReplacer replacer = new PlaceholderReplacer()
                     .addPlaceholder("%current-exp%", FormatUtils.formatComma(progressionData.getExp()))
-                    .addPlaceholder("%max-exp%", FormatUtils.formatComma(AbyssMath.parseEquation(progression.getExpFormula().replace("%level%", String.valueOf(progressionData.getLevel())))))
+                    .addPlaceholder("%max-exp%", FormatUtils.formatComma(CommonsMath.parseEquation(progression.getExpFormula().replace("%level%", String.valueOf(progressionData.getLevel())))))
                     .addPlaceholder("%current-level%", FormatUtils.formatComma(progressionData.getLevel()));
 
             builder.setItem(level.getMenuSlot(), unlocked ? level.getUnlockedItem().parse(replacer) : level.getLockedItem().parse(replacer));

@@ -3,11 +3,11 @@ package me.faln.skyblockcore.utils;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import me.faln.skyblockcore.yml.YMLConfig;
-import net.abyssdev.abysslib.placeholder.PlaceholderReplacer;
-import net.abyssdev.abysslib.text.message.Message;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.eclipse.collections.api.factory.Maps;
+import org.stormdev.chat.Message;
+import org.stormdev.chat.PlaceholderReplacer;
 
 import java.util.Map;
 

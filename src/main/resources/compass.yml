@@ -1,0 +1,7 @@
+compass-command: "compass"
+compass-item:
+  name: "&a%player% Profile"
+  custom-model-data: 0
+  material: COMPASS
+  lore:
+    - "&7Click to open your profile menu."

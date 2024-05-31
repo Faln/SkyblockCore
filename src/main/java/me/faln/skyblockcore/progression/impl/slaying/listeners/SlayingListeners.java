@@ -1,12 +1,11 @@
 package me.faln.skyblockcore.progression.impl.slaying.listeners;
 
 import me.faln.skyblockcore.SkyblockCore;
-import me.faln.skyblockcore.events.ExperienceGainEvent;
+import me.faln.skyblockcore.events.ProfessionExperienceGainEvent;
 import me.faln.skyblockcore.player.PlayerData;
 import me.faln.skyblockcore.progression.impl.slaying.SlayingProgression;
 import me.faln.skyblockcore.progression.types.ProgressionType;
 import me.faln.skyblockcore.utils.SpawnerUtils;
-import net.abyssdev.abysslib.listener.AbyssListener;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -18,8 +17,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.stormdev.abstracts.CommonListener;
+import org.stormdev.chat.PlaceholderReplacer;
 
-public final class SlayingListeners extends AbyssListener<SkyblockCore> {
+public final class SlayingListeners extends CommonListener<SkyblockCore> {
 
     private final SlayingProgression progression;
 
@@ -42,10 +43,12 @@ public final class SlayingListeners extends AbyssListener<SkyblockCore> {
 
         final Player player = (Player) event.getDamager();
         final PlayerData data = this.plugin.getPlayerStorage().get(player.getUniqueId());
+        final int levelRequirement = this.progression.getLevelRequirement().get(type).getLevelRequirement();
 
-        if (this.progression.getLevelRequirement().get(type).getLevelRequirement() > data.getLevels().get(ProgressionType.SLAYING).getLevel()) {
+        if (levelRequirement > data.getLevels().get(ProgressionType.SLAYING).getLevel()) {
             event.setCancelled(true);
-            this.plugin.getMessageCache().sendMessage(player, "messages.entity-locked");
+            this.plugin.getMessageCache().sendMessage(player, "messages.entity-locked", new PlaceholderReplacer()
+                    .addPlaceholder("%level%", String.valueOf(levelRequirement)));
         }
     }
 
@@ -74,7 +77,7 @@ public final class SlayingListeners extends AbyssListener<SkyblockCore> {
         }
 
         final double exp = this.progression.getExperienceValues().get(type).get();
-        final ExperienceGainEvent experienceGainEvent = new ExperienceGainEvent(player, ProgressionType.SLAYING, exp, false);
+        final ProfessionExperienceGainEvent experienceGainEvent = new ProfessionExperienceGainEvent(player, ProgressionType.SLAYING, exp, false);
 
         Bukkit.getServer().getPluginManager().callEvent(experienceGainEvent);
 
@@ -106,10 +109,12 @@ public final class SlayingListeners extends AbyssListener<SkyblockCore> {
 
         final Player player = event.getPlayer();
         final PlayerData data = this.plugin.getPlayerStorage().get(player.getUniqueId());
+        final int levelRequirement = this.progression.getLevelRequirement().get(entityType).getLevelRequirement();
 
-        if (this.progression.getLevelRequirement().get(entityType).getLevelRequirement() > data.getLevels().get(ProgressionType.SLAYING).getLevel()) {
+        if (levelRequirement > data.getLevels().get(ProgressionType.SLAYING).getLevel()) {
             event.setCancelled(true);
-            this.plugin.getMessageCache().sendMessage(player, "messages.spawner-locked");
+            this.plugin.getMessageCache().sendMessage(player, "messages.spawner-locked", new PlaceholderReplacer()
+                    .addPlaceholder("%level%", String.valueOf(levelRequirement)));
         }
     }
 }
