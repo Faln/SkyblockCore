@@ -20,7 +20,6 @@ import java.util.Collection;
 public abstract class JsonStorage<K, V> implements Storage<K, V>, ConstructableValue<K, V> {
 
     private static final Gson GSON = new GsonBuilder()
-            .registerTypeAdapter(ProgressionType.class, new ProgressionType.Serializer())
             .setPrettyPrinting()
             .create();
 

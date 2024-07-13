@@ -1,0 +1,200 @@
+robot-upgrades:
+  title: "&8Robot Upgrades"
+  rows: 3
+  borders:
+    gray:
+      material: BLACK_STAINED_GLASS_PANE
+      name: ""
+      lore: []
+      slot:
+        - "0-26"
+  speed:
+    material: SUGAR
+    name: "&a&lSpeed Upgrade"
+    lore:
+      - "&eLevel: &a%current%&8/&c%max%"
+      - "&eSpeed: &a%speed%"
+      - "&eCost: &a$%cost%"
+      - ""
+      - "&eClick to upgrade"
+    slot: 12
+  storage:
+    material: CHEST
+    name: "&a&lStorage Upgrade"
+    lore:
+      - "&eLevel: &a%current%&8/&c%max%"
+      - "&eStorage: &a%storage%"
+      - "&eCost: &a$%cost%"
+      - ""
+      - "&eClick to upgrade"
+    slot: 14
+
+robot-type-change:
+  title: "&8Robot Type Management"
+  rows: 3
+  borders:
+    gray:
+      material: BLACK_STAINED_GLASS_PANE
+      name: ""
+      lore: []
+      slot:
+        - "0-26"
+  farmer:
+    material: DIAMOND_HOE
+    name: "&a&lFarmer"
+    lore: []
+    slot: 10
+  miner:
+    material: DIAMOND_PICKAXE
+    name: "&a&lMiner"
+    lore: []
+    slot: 12
+  slayer:
+    material: DIAMOND_SWORD
+    name: "&a&lSword"
+    lore: []
+    slot: 14
+  none:
+    material: BARRIER
+    name: "&a&lNone"
+    lore: []
+    slot: 16
+
+robot:
+  title: "&8Robot Management"
+  rows: 3
+  borders:
+    gray:
+      material: BLACK_STAINED_GLASS_PANE
+      name: ""
+      lore: []
+      slot:
+        - "0-26"
+  type-change:
+    name: "&eChange Profession"
+    material: CRAFTING_TABLE
+    lore:
+      - ""
+      - "&eCurrent Profession: &f%type%"
+      - ""
+      - "&7Click to change the robots profession."
+  pickup:
+    name: "&ePickup Robot"
+    material: BARRIER
+    lore:
+      - "&7Click to pickup this robot."
+  upgrades:
+    name: "&eRobot Upgrades"
+    material: HOPPER
+    lore:
+      - "&7Click to view robot upgrades."
+  sell:
+    name: "&eSell Contents"
+    material: EMERALD
+    lore:
+      - ""
+      - "&eCurrently Holding: &f$%amount% &7(%item-count% items)"
+      - ""
+      - "&7Click to sell all robot contents."
+
+mining:
+  title: "&8Mining Progression"
+  rows: 3
+  borders:
+    gray:
+      material: BLACK_STAINED_GLASS_PANE
+      name: ""
+      lore: []
+      slot:
+        - "0-26"
+woodcutting:
+  title: "&8WoodCutting Progression"
+  rows: 3
+  borders:
+    gray:
+      material: BLACK_STAINED_GLASS_PANE
+      name: ""
+      lore: []
+      slot:
+        - "0-26"
+slaying:
+  title: "&8Slaying Progression"
+  rows: 3
+  borders:
+    gray:
+      material: BLACK_STAINED_GLASS_PANE
+      name: ""
+      lore: []
+      slot:
+        - "0-26"
+fishing:
+  title: "&8Fishing Progression"
+  rows: 3
+  borders:
+    gray:
+      material: BLACK_STAINED_GLASS_PANE
+      name: ""
+      lore: []
+      slot:
+        - "0-26"
+farming:
+  title: "&8Farming Progression"
+  rows: 3
+  borders:
+    gray:
+      material: BLACK_STAINED_GLASS_PANE
+      name: ""
+      lore: []
+      slot:
+        - "0-26"
+selection:
+  title: "&8Progressions"
+  rows: 3
+  borders:
+    gray:
+      material: BLACK_STAINED_GLASS_PANE
+      name: ""
+      lore: []
+      slot:
+        - "0-26"
+  items:
+    FARMING:
+      slot: 10
+      item:
+        name: "&a&lFarming Progression &7&l[&fLevel %farming-level%&7&l]"
+        material: WHEAT
+        custom-model-data: 0
+        lore:
+          - "&eClick to view your current farming progressions."
+    MINING:
+      slot: 11
+      item:
+        name: "&a&lMining Progression &7&l[&fLevel %mining-level%&7&l]"
+        material: STONE_PICKAXE
+        custom-model-data: 0
+        lore:
+          - "&eClick to view your current mining progressions."
+    WOODCUTTING:
+      slot: 13
+      item:
+        name: "&a&lWoodCutting Progression &7&l[&fLevel %woodcutting-level%&7&l]"
+        material: STONE_AXE
+        custom-model-data: 0
+        lore:
+          - "&eClick to view your current woodcutting progressions."
+    SLAYING:
+      slot: 15
+      item:
+        name: "&a&lSlaying Progression &7&l[&fLevel %slaying-level%&7&l]"
+        material: STONE_SWORD
+        custom-model-data: 0
+        lore:
+          - "&eClick to view your current slaying progressions."
+    FISHING:
+      slot: 15
+      item:
+        name: "&a&lFishing Progression &7&l[&fLevel %fishing-level%&7&l]"
+        material: FISHING_ROD
+        custom-model-data: 0
+        lore:
+          - "&eClick to view your current fishing progressions."

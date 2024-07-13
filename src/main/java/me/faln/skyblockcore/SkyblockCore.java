@@ -20,11 +20,19 @@ import me.faln.skyblockcore.progression.commands.subcommands.SetLevelSubCommand;
 import me.faln.skyblockcore.progression.listeners.ProgressionLevelUpListener;
 import me.faln.skyblockcore.progression.milestones.MilestonesRegistry;
 import me.faln.skyblockcore.progression.registry.ProgressionRegistry;
+import me.faln.skyblockcore.robots.RobotManager;
+import me.faln.skyblockcore.robots.impl.Robot;
+import me.faln.skyblockcore.robots.listener.RobotListener;
+import me.faln.skyblockcore.robots.storage.RobotJsonStorage;
+import me.faln.skyblockcore.robots.tasks.RobotTickTask;
+import me.faln.skyblockcore.robots.tiers.registry.TierRegistry;
+import me.faln.skyblockcore.robots.upgrade.registry.RobotUpgradeRegistry;
 import me.faln.skyblockcore.tasks.PlayerDataSaveTask;
 import me.faln.skyblockcore.utils.MessageCache;
 import me.faln.skyblockcore.yml.YMLConfig;
 import me.faln.skyblockcore.yml.registry.FilesRegistry;
 import org.bukkit.Location;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.stormdev.CommonPlugin;
 import org.stormdev.builder.ItemBuilder;
 import org.stormdev.storage.common.CommonStorageImpl;
@@ -43,8 +51,13 @@ public final class SkyblockCore extends CommonPlugin<SkyblockCore> {
     private final MilestonesRegistry milestonesRegistry = new MilestonesRegistry(this);
     private final DimensionRegistry dimensionRegistry = new DimensionRegistry(this);
     private final DimensionCooldown dimensionCooldown = new DimensionCooldown(this);
+    private final RobotUpgradeRegistry robotUpgradeRegistry = new RobotUpgradeRegistry(this);
+    private final TierRegistry tierRegistry = new TierRegistry(this);
+
+    private final RobotManager robotManager = new RobotManager(this);
 
     private final CommonStorageImpl<UUID, PlayerData> playerStorage = new CommonStorageImpl<>(new PlayerJsonStorage(this));
+    private final CommonStorageImpl<Location, Robot> robotStorage = new CommonStorageImpl<>(new RobotJsonStorage(this));
 
     private final ProgressionCommands progressionCommands = new ProgressionCommands(this);
     private final SkyblockCoreCommand skyblockCoreCommand = new SkyblockCoreCommand(this);
@@ -53,6 +66,7 @@ public final class SkyblockCore extends CommonPlugin<SkyblockCore> {
 
     private PlayerDataSaveTask saveTask;
     private DimensionScanTask scanTask;
+    private RobotTickTask robotTickTask;
 
     private Location spawnLocation;
     private String expFormula;
@@ -76,10 +90,12 @@ public final class SkyblockCore extends CommonPlugin<SkyblockCore> {
 
         this.saveTask = new PlayerDataSaveTask(this);
         this.scanTask = new DimensionScanTask(this);
+        this.robotTickTask = new RobotTickTask(this);
 
         new ProgressionLevelUpListener(this);
         new CompassInteractListener(this);
         new CompassJoinListener(this);
+        new RobotListener(this);
     }
 
     public void load() {
@@ -94,6 +110,10 @@ public final class SkyblockCore extends CommonPlugin<SkyblockCore> {
         this.dimensionRegistry.load();
         this.progressionRegistry.load();
         this.dimensionCooldown.load();
+        this.tierRegistry.load();
+        this.robotUpgradeRegistry.load();
+        this.robotManager.load();
+
     }
 
     @Override
@@ -108,6 +128,10 @@ public final class SkyblockCore extends CommonPlugin<SkyblockCore> {
 
         if (!this.scanTask.isCancelled()) {
             this.scanTask.cancel();
+        }
+
+        if (!this.robotTickTask.isCancelled()) {
+            this.robotTickTask.cancel();
         }
     }
 
